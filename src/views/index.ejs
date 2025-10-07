@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mini Message Board</title>
+        <link href="/styles/index.css" rel="stylesheet">
+    </head>
+    <body>
+        <h2 class="header">Public Chat</h2>
+        <div class="main">
+            <div class="container">
+                <% messages.forEach((msg) => { %>
+                <div class="chat-container">
+                    <span>
+                        <span class="author"><%= msg.author_name %></span>
+                        <span class="created_at"><%= msg.created_at %></span>
+                    </span>
+                    <p class="message">
+                    <%= msg.message %>
+                    </p>
+                </div>
+                <% }) %>
+            </div>
+            <%- include('form')%>
+
+            <!-- Modal -->
+            <% if (locals.errors?.author || locals.errors?.user_message) { %>
+              <div class="modal">
+                <% if (locals.errors?.author) { %>
+                  <%= errors.author.msg %>
+                <% } else if (locals.errors?.user_message) { %>
+                  <%= errors.user_message.msg %>
+                <% } %>
+              </div>
+            <% } %>
+        </div>
+    </body>
+
+    <script src="/scroll.js"></script>
+</html>
