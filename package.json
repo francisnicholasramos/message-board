@@ -24,7 +24,7 @@
   "homepage": "https://github.com/francisnicholasramos/message-board#readme",
   "devDependencies": {
     "@types/express": "^5.0.3",
-    "@types/node": "^24.6.2",
+    "@types/node": "^24.7.0",
     "@types/pg": "^8.15.5",
     "dotenv": "^17.2.3",
     "eslint": "^9.37.0",

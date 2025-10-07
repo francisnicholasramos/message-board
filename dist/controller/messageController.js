@@ -25,8 +25,15 @@ async function postMessage(req, res, next) {
     const errors = (0, express_validator_1.validationResult)(req);
     if (!errors.isEmpty()) {
         const { rows } = await (0, index_1.query)("SELECT author_name, message, created_at FROM messages");
+        const messages = rows.map((row) => {
+            const formattedDate = (0, date_fns_1.format)(new Date(row.created_at), "EEE, MMM dd, h:mm a");
+            return {
+                ...row,
+                created_at: formattedDate,
+            };
+        });
         res.render("index", {
-            messages: rows,
+            messages: messages,
             errors: errors.mapped(),
             showModal: true
         });
