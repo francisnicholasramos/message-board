@@ -9,7 +9,7 @@ const helmet_1 = __importDefault(require("helmet"));
 const route_1 = require("./routes/route");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
-app.set("views", path_1.default.join(__dirname, "../views"));
+app.set("views", path_1.default.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use((0, helmet_1.default)());
 app.use("/styles", express_1.default.static(path_1.default.join(__dirname, "styles")));
